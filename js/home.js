@@ -34,8 +34,8 @@ const createInnerHTML = () => {
             <td>${empPayRollData._salary}</td>
             <td>${empPayRollData._startDate}</td>
             <td>
-                <span name="${empPayRollData._id}" class="fa fa-trash" id="1" onclick="remove(this)"></span>
-                <span name="${empPayRollData._id}" class="fa fa-pencil" id="2" onclick="update(this)"></span>
+                <span id="${empPayRollData._id}" class="fa fa-trash" id="1" onclick="remove(this)"></span>
+                <span id="${empPayRollData._id}" class="fa fa-pencil" id="2" onclick="update(this)"></span>
             </td>
         </tr>
         `;
@@ -76,4 +76,13 @@ let createEmployeePayRollJSON = () => {
     ];
 
     return empPayRollListLocal;
+}
+
+const remove = (node) => {
+    let empPayRollData = empPayRollList.find(empData => empData._id == node.id);
+    if(!empPayRollData) return;
+    const index = empPayRollList.map(empData => empData._id).indexOf(empPayRollData._id);
+    empPayRollList.splice(index,1);
+    localStorage.setItem('EmployeePayRollList',JSON.stringify(empPayRollList));
+    createInnerHTML();
 }
