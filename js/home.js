@@ -7,8 +7,7 @@ window.addEventListener('DOMContentLoaded',(event) =>{
 });
 
 const getEmployeePayRollDataFromStorage = () =>{
-    return localStorage.getItem('EmployeePayRollList') ? 
-            JSON.parse(localStorage.getItem('EmployeePayRollList')) : [];
+    return localStorage.getItem('EmployeePayRollList') ? JSON.parse(localStorage.getItem('EmployeePayRollList')) : [];
 }
 
 const createInnerHTML = () => {
@@ -24,7 +23,8 @@ const createInnerHTML = () => {
     </tr>`;
     if(empPayRollList.length == 0) return;
     let innerHtml = `${headerHtml}`;
-    for( const empPayRollData of empPayRollList){
+    for (const empPayRollData of empPayRollList)
+    {
         innerHtml = `${innerHtml}
         <tr>
             <td><img class="profile" src="${empPayRollData._profilePic}" alt="profile pic"></td>
@@ -32,7 +32,7 @@ const createInnerHTML = () => {
             <td>${empPayRollData._gender}</td>
             <td>${getDepHtml(empPayRollData._department)}</td>
             <td>${empPayRollData._salary}</td>
-            <td>${empPayRollData._startDate}</td>
+            <td>${stringyfydate(empPayRollData._startDate)}</td>
             <td>
                 <span id="${empPayRollData._id}" class="fa fa-trash" id="1" onclick="remove(this)"></span>
                 <span id="${empPayRollData._id}" class="fa fa-pencil" id="2" onclick="update(this)"></span>
