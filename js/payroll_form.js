@@ -39,6 +39,7 @@ const createEmployeePayroll = () => {
         setTextValue('.text-error',e);
         throw e;
     }
+    employeePayRollData._id = new Date().getTime();
     employeePayRollData.profilePic = getSelectedValues('[name=profile]').pop();
     employeePayRollData.gender = getSelectedValues('[name=gender]').pop();
     employeePayRollData.department = getSelectedValues('[name=department]');

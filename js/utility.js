@@ -1,5 +1,5 @@
-const stringyfydate = (node) => {
+const stringyfydate = (date) => {
     const options = {day:'numeric', month: 'short', year: 'numeric'};
-    const newDate = !date? "undefine": new Date(Date.parse(date).toLocaleDateString('en-GB',options));
+    const newDate = !date? "undefined": new Date(Date.parse(date)).toLocaleDateString('en-GB',options);
     return newDate;
 }
