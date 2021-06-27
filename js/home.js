@@ -52,37 +52,12 @@ const getDepHtml = (deptlist) => {
     return deptHtml;
 }
 
-// let createEmployeePayRollJSON = () => {
-//     let empPayRollListLocal = [{
-//         _name : "Sagar",
-//         _gender : "male",
-//         _department : ["finance","hr"],
-//         _salary : 45000,
-//         _startDate : "1 OCt 2021",
-//         _note : "",
-//         _id : new Date().getTime(),
-//         _profilePic : "../assets/logo1.PNG"
-//     },
-//     {
-//         _name : "Sunny",
-//         _gender : "female",
-//         _department : ["finance","engineering"],
-//         _salary : 48000,
-//         _startDate : "1 OCt 2020",
-//         _note : "",
-//         _id : new Date().getTime() + 1,
-//         _profilePic : "../assets/logo2.PNG"
-//     }
-//     ];
-
-//     return empPayRollListLocal;
-// }
-
 const remove = (node) => {
     let empPayRollData = empPayRollList.find(empData => empData._id == node.id);
     if(!empPayRollData) return;
     const index = empPayRollList.map(empData => empData._id).indexOf(empPayRollData._id);
     empPayRollList.splice(index,1);
     localStorage.setItem('EmployeePayRollList',JSON.stringify(empPayRollList));
+    document.querySelector('.emp-count').textContent = empPayRollList.length;
     createInnerHTML();
 }
