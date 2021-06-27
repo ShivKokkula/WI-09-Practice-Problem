@@ -47,7 +47,7 @@ const save = (event) => {
         setEmployeePayRollObject();
         createAndUpdateStorage();
         resetForm();
-        window.location.replace(site-properties.home_page);
+        window.location.replace(site_properties.home_page);
     } catch (e) {
         return;
     }
